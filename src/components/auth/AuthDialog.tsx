@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Mail, User, Lock, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface AuthDialogProps {
   open: boolean;
@@ -20,16 +21,31 @@ export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
   const handleAuth = async (event: React.FormEvent<HTMLFormElement>, type: 'signin' | 'signup') => {
     event.preventDefault();
     setIsLoading(true);
+    
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-    // Simulate authentication
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: type === 'signin' ? "Welcome back!" : "Account created successfully!",
-        description: type === 'signin' ? "You've been signed in." : "Please check your email to verify your account.",
-      });
+    try {
+      if (type === 'signin') {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        toast({ title: "Welcome back!", description: "You've been signed in successfully." });
+      } else {
+        const { error } = await supabase.auth.signUp({ 
+          email, 
+          password,
+          options: { emailRedirectTo: `${window.location.origin}/` }
+        });
+        if (error) throw error;
+        toast({ title: "Account created!", description: "Please check your email to verify your account." });
+      }
       onOpenChange(false);
-    }, 2000);
+    } catch (error: any) {
+      toast({ title: "Error", description: error.message, variant: "destructive" });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

@@ -1,4 +1,12 @@
 import shipInterior from "@/assets/ship-interior.jpg";
+import expeditionShip1 from "@/assets/ships/expedition-ship-1.jpg";
+import expeditionShip2 from "@/assets/ships/expedition-ship-2.jpg";
+import expeditionShip3 from "@/assets/ships/expedition-ship-3.jpg";
+import expeditionShip4 from "@/assets/ships/expedition-ship-4.jpg";
+import expeditionShip5 from "@/assets/ships/expedition-ship-5.jpg";
+import expeditionShip6 from "@/assets/ships/expedition-ship-6.jpg";
+import expeditionShip7 from "@/assets/ships/expedition-ship-7.jpg";
+import expeditionShip8 from "@/assets/ships/expedition-ship-8.jpg";
 
 export interface Ship {
   id: string;
@@ -688,7 +696,7 @@ export const ships: Ship[] = [
     capacity: 92,
     suites: 46,
     crew: 62,
-    image: shipInterior,
+    image: expeditionShip1,
     description: "Ice-class specialist vessel designed for challenging polar conditions and extreme environment access.",
     features: [
       "Extreme ice capability",
@@ -728,6 +736,96 @@ export const ships: Ship[] = [
     expeditionAreas: ["Extreme Polar", "Heavy Ice Regions", "Research Expeditions", "Challenging Destinations"],
     priceRange: "$18,000 - $55,000",
     rating: 4.8
+  },
+  {
+    id: "arctic-majesty",
+    name: "Arctic Majesty",
+    capacity: 128,
+    suites: 64,
+    crew: 88,
+    image: expeditionShip2,
+    description: "Elegant expedition ship designed for Arctic adventures with superior comfort and style.",
+    features: ["Arctic specialization", "Elegant design", "Superior comfort", "Expert guides"],
+    specifications: { length: "115 meters", beam: "17 meters", speed: "15 knots", iceClass: "1A", registry: "Norway", yearBuilt: "2022" },
+    amenities: ["Elegant restaurant", "Arctic lounge", "Spa center", "Library"],
+    expeditionAreas: ["Arctic Circle", "Greenland", "Svalbard"],
+    priceRange: "$16,000 - $48,000",
+    rating: 4.8
+  },
+  {
+    id: "polar-crown",
+    name: "Polar Crown",
+    capacity: 84,
+    suites: 42,
+    crew: 58,
+    image: expeditionShip3,
+    description: "Premium boutique vessel for exclusive polar expeditions.",
+    features: ["Boutique experience", "Premium service", "Exclusive access", "Luxury amenities"],
+    specifications: { length: "92 meters", beam: "14 meters", speed: "14 knots", iceClass: "1A Super", registry: "Finland", yearBuilt: "2023" },
+    amenities: ["Premium dining", "Luxury lounge", "Wellness spa", "Observatory"],
+    expeditionAreas: ["Antarctica", "Arctic", "Remote Islands"],
+    priceRange: "$22,000 - $65,000",
+    rating: 4.9
+  },
+  {
+    id: "expedition-elite",
+    name: "Expedition Elite",
+    capacity: 156,
+    suites: 78,
+    crew: 112,
+    image: expeditionShip4,
+    description: "Elite expedition vessel combining adventure with luxury amenities.",
+    features: ["Elite experience", "Adventure focus", "Luxury comfort", "Expert team"],
+    specifications: { length: "128 meters", beam: "19 meters", speed: "16 knots", iceClass: "1B", registry: "Malta", yearBuilt: "2021" },
+    amenities: ["Elite dining", "Adventure lounge", "Fitness center", "Spa"],
+    expeditionAreas: ["Worldwide Expeditions", "Premium Destinations"],
+    priceRange: "$17,500 - $52,000",
+    rating: 4.7
+  },
+  {
+    id: "nordic-legend",
+    name: "Nordic Legend",
+    capacity: 112,
+    suites: 56,
+    crew: 78,
+    image: expeditionShip5,
+    description: "Legendary Nordic design expedition ship for authentic polar experiences.",
+    features: ["Nordic heritage", "Authentic design", "Polar expertise", "Cultural focus"],
+    specifications: { length: "105 meters", beam: "16 meters", speed: "15 knots", iceClass: "1A", registry: "Norway", yearBuilt: "2020" },
+    amenities: ["Nordic restaurant", "Legend lounge", "Cultural center", "Library"],
+    expeditionAreas: ["Nordic Seas", "Greenland", "Arctic Norway"],
+    priceRange: "$15,500 - $45,000",
+    rating: 4.8
+  },
+  {
+    id: "antarctic-star",
+    name: "Antarctic Star",
+    capacity: 98,
+    suites: 49,
+    crew: 68,
+    image: expeditionShip6,
+    description: "Specialized Antarctic expedition vessel with cutting-edge technology.",
+    features: ["Antarctic focus", "Advanced technology", "Research capabilities", "Wildlife expertise"],
+    specifications: { length: "100 meters", beam: "15 meters", speed: "14 knots", iceClass: "1A Super", registry: "Chile", yearBuilt: "2022" },
+    amenities: ["Research dining", "Star observatory", "Tech center", "Wildlife deck"],
+    expeditionAreas: ["Antarctica", "Sub-Antarctic", "Southern Ocean"],
+    priceRange: "$19,000 - $58,000",
+    rating: 4.9
+  },
+  {
+    id: "ultimate-explorer",
+    name: "Ultimate Explorer",
+    capacity: 188,
+    suites: 94,
+    crew: 135,
+    image: expeditionShip7,
+    description: "Ultimate expedition experience with comprehensive facilities and global reach.",
+    features: ["Ultimate experience", "Global expeditions", "Comprehensive facilities", "Premium service"],
+    specifications: { length: "135 meters", beam: "21 meters", speed: "17 knots", iceClass: "1B", registry: "Bahamas", yearBuilt: "2023" },
+    amenities: ["Ultimate dining", "Global lounge", "Premium spa", "Entertainment"],
+    expeditionAreas: ["Global Destinations", "All Regions", "Comprehensive Tours"],
+    priceRange: "$14,000 - $42,000",
+    rating: 4.7
   }
 ];
 
