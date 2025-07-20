@@ -29,18 +29,38 @@ export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
     try {
       if (type === 'signin') {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        if (error) {
+          if (error.message.includes('email not confirmed')) {
+            toast({ 
+              title: "Email not verified", 
+              description: "Please check your email and click the verification link before signing in.", 
+              variant: "destructive" 
+            });
+            return;
+          }
+          throw error;
+        }
         toast({ title: "Welcome back!", description: "You've been signed in successfully." });
+        onOpenChange(false);
       } else {
-        const { error } = await supabase.auth.signUp({ 
+        const { data, error } = await supabase.auth.signUp({ 
           email, 
           password,
           options: { emailRedirectTo: `${window.location.origin}/` }
         });
         if (error) throw error;
-        toast({ title: "Account created!", description: "Please check your email to verify your account." });
+        
+        if (data.user && !data.session) {
+          toast({ 
+            title: "Check your email!", 
+            description: "We've sent you a verification link. Please verify your email before signing in." 
+          });
+          onOpenChange(false);
+        } else {
+          toast({ title: "Account created!", description: "You can now sign in to your account." });
+          onOpenChange(false);
+        }
       }
-      onOpenChange(false);
     } catch (error: any) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
     } finally {
