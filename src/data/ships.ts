@@ -7,6 +7,18 @@ import expeditionShip5 from "@/assets/ships/expedition-ship-5.jpg";
 import expeditionShip6 from "@/assets/ships/expedition-ship-6.jpg";
 import expeditionShip7 from "@/assets/ships/expedition-ship-7.jpg";
 import expeditionShip8 from "@/assets/ships/expedition-ship-8.jpg";
+import expeditionShip9 from "@/assets/ships/expedition-ship-9.jpg";
+import expeditionShip10 from "@/assets/ships/expedition-ship-10.jpg";
+import expeditionShip11 from "@/assets/ships/expedition-ship-11.jpg";
+import expeditionShip12 from "@/assets/ships/expedition-ship-12.jpg";
+import expeditionShip13 from "@/assets/ships/expedition-ship-13.jpg";
+import expeditionShip14 from "@/assets/ships/expedition-ship-14.jpg";
+import expeditionShip15 from "@/assets/ships/expedition-ship-15.jpg";
+import expeditionShip16 from "@/assets/ships/expedition-ship-16.jpg";
+import expeditionShip17 from "@/assets/ships/expedition-ship-17.jpg";
+import expeditionShip18 from "@/assets/ships/expedition-ship-18.jpg";
+import expeditionShip19 from "@/assets/ships/expedition-ship-19.jpg";
+import expeditionShip20 from "@/assets/ships/expedition-ship-20.jpg";
 
 export interface Ship {
   id: string;
@@ -85,7 +97,7 @@ export const ships: Ship[] = [
     capacity: 132,
     suites: 66,
     crew: 90,
-    image: shipInterior,
+    image: expeditionShip9,
     description: "Intimate expedition ship perfect for reaching remote destinations with smaller group experiences.",
     features: [
       "Intimate expedition experience",
@@ -132,7 +144,7 @@ export const ships: Ship[] = [
     capacity: 54,
     suites: 27,
     crew: 38,
-    image: shipInterior,
+    image: expeditionShip10,
     description: "Boutique expedition vessel offering the most exclusive and personalized polar adventures.",
     features: [
       "Ultra-luxury boutique experience",
@@ -179,7 +191,7 @@ export const ships: Ship[] = [
     capacity: 200,
     suites: 100,
     crew: 140,
-    image: shipInterior,
+    image: expeditionShip11,
     description: "Large expedition ship offering comprehensive facilities while maintaining expedition authenticity.",
     features: [
       "Spacious expedition vessel",
@@ -226,7 +238,7 @@ export const ships: Ship[] = [
     capacity: 96,
     suites: 48,
     crew: 65,
-    image: shipInterior,
+    image: expeditionShip12,
     description: "Traditional expedition vessel combining classic exploration spirit with modern comfort and safety.",
     features: [
       "Classic expedition atmosphere",
@@ -273,7 +285,7 @@ export const ships: Ship[] = [
     capacity: 144,
     suites: 72,
     crew: 95,
-    image: shipInterior,
+    image: expeditionShip13,
     description: "Specialized for Southern Ocean expeditions with superior comfort and Antarctic expertise.",
     features: [
       "Antarctic specialization",
@@ -320,7 +332,7 @@ export const ships: Ship[] = [
     capacity: 78,
     suites: 39,
     crew: 52,
-    image: shipInterior,
+    image: expeditionShip14,
     description: "Agile expedition vessel designed for accessing the most remote and challenging destinations.",
     features: [
       "Remote destination access",
@@ -367,7 +379,7 @@ export const ships: Ship[] = [
     capacity: 120,
     suites: 60,
     crew: 110,
-    image: shipInterior,
+    image: expeditionShip15,
     description: "Premium expedition yacht offering the finest accommodations and personalized service.",
     features: [
       "Ultra-luxury experience",
@@ -414,7 +426,7 @@ export const ships: Ship[] = [
     capacity: 162,
     suites: 81,
     crew: 105,
-    image: shipInterior,
+    image: expeditionShip16,
     description: "Scandinavian-designed expedition ship emphasizing sustainability and Nordic elegance.",
     features: [
       "Sustainable expedition design",
@@ -461,7 +473,7 @@ export const ships: Ship[] = [
     capacity: 186,
     suites: 93,
     crew: 125,
-    image: shipInterior,
+    image: expeditionShip17,
     description: "Modern expedition ship combining cutting-edge technology with traditional exploration values.",
     features: [
       "Modern expedition technology",
@@ -508,7 +520,7 @@ export const ships: Ship[] = [
     capacity: 108,
     suites: 54,
     crew: 75,
-    image: shipInterior,
+    image: expeditionShip18,
     description: "Classic expedition vessel honoring maritime heritage while providing modern expedition capabilities.",
     features: [
       "Maritime heritage design",
@@ -555,7 +567,7 @@ export const ships: Ship[] = [
     capacity: 68,
     suites: 34,
     crew: 45,
-    image: shipInterior,
+    image: expeditionShip19,
     description: "Small expedition vessel specializing in wilderness access and intimate nature experiences.",
     features: [
       "Wilderness specialization",
@@ -602,7 +614,7 @@ export const ships: Ship[] = [
     capacity: 156,
     suites: 78,
     crew: 118,
-    image: shipInterior,
+    image: expeditionShip20,
     description: "Premium polar expedition vessel offering sophisticated luxury in extreme environments.",
     features: [
       "Polar luxury experience",
@@ -649,7 +661,7 @@ export const ships: Ship[] = [
     capacity: 224,
     suites: 112,
     crew: 165,
-    image: shipInterior,
+    image: expeditionShip8,
     description: "Large expedition cruise ship providing comprehensive expedition experiences with resort-style amenities.",
     features: [
       "Comprehensive expedition platform",

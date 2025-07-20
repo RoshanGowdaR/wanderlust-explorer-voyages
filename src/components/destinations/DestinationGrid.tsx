@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,23 +6,45 @@ import { Star, MapPin, Clock, Users, ChevronRight } from "lucide-react";
 import { destinations } from "@/data/destinations";
 import DestinationModal from "./DestinationModal";
 import AuthDialog from "@/components/auth/AuthDialog";
+import { supabase } from "@/integrations/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 export default function DestinationGrid() {
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null);
+        if (event === 'SIGNED_IN' && selectedDestination) {
+          // Show destination modal after successful authentication
+          setIsAuthOpen(false);
+          setIsModalOpen(true);
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, [selectedDestination]);
 
   const handleDestinationClick = (destination: any) => {
     setSelectedDestination(destination);
-    setIsAuthOpen(true);
-  };
-
-  const handleAuthSuccess = () => {
-    setIsAuthOpen(false);
-    // After successful auth, show the destination details
-    if (selectedDestination) {
-      // Here you would normally set up the destination modal
-      // For now, we'll show a toast
+    if (user) {
+      // User is authenticated, show modal directly
+      setIsModalOpen(true);
+    } else {
+      // User not authenticated, show auth dialog
+      setIsAuthOpen(true);
     }
   };
 
@@ -142,6 +164,15 @@ export default function DestinationGrid() {
           setIsAuthOpen(open);
           if (!open) setSelectedDestination(null);
         }} 
+      />
+
+      <DestinationModal
+        destination={selectedDestination}
+        open={isModalOpen}
+        onOpenChange={(open) => {
+          setIsModalOpen(open);
+          if (!open) setSelectedDestination(null);
+        }}
       />
     </>
   );

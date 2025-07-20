@@ -1,12 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Menu, X, Compass } from "lucide-react";
+import { Search, Menu, X, Compass, User as UserIcon, LogOut } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import AuthDialog from "@/components/auth/AuthDialog";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import type { User } from "@supabase/supabase-js";
 
 export default function Header() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null);
+        if (event === 'SIGNED_IN') {
+          setIsAuthOpen(false);
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      toast({ title: "Signed out", description: "You've been signed out successfully." });
+    } catch (error: any) {
+      toast({ title: "Error", description: error.message, variant: "destructive" });
+    }
+  };
 
   const navigationItems = [
     { name: "Destinations", href: "#destinations" },
@@ -59,13 +94,30 @@ export default function Header() {
               </div>
 
               {/* Auth Button */}
-              <Button
-                onClick={() => setIsAuthOpen(true)}
-                variant="glass"
-                className="hidden sm:inline-flex"
-              >
-                Sign In
-              </Button>
+              {user ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="glass" className="hidden sm:inline-flex">
+                      <UserIcon className="h-4 w-4 mr-2" />
+                      {user.email?.split('@')[0]}
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuItem onClick={handleSignOut}>
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Button
+                  onClick={() => setIsAuthOpen(true)}
+                  variant="glass"
+                  className="hidden sm:inline-flex"
+                >
+                  Sign In
+                </Button>
+              )}
 
               {/* Mobile Menu Button */}
               <Button
@@ -102,16 +154,30 @@ export default function Header() {
                       className="pl-10 bg-background/50 border-accent/30"
                     />
                   </div>
-                  <Button
-                    onClick={() => {
-                      setIsAuthOpen(true);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    variant="glass"
-                    className="w-full"
-                  >
-                    Sign In
-                  </Button>
+                  {user ? (
+                    <Button
+                      onClick={() => {
+                        handleSignOut();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      variant="glass"
+                      className="w-full"
+                    >
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        setIsAuthOpen(true);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      variant="glass"
+                      className="w-full"
+                    >
+                      Sign In
+                    </Button>
+                  )}
                 </div>
               </nav>
             </div>

@@ -5,9 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Ship, Anchor, Users, Gauge, Star, ChevronRight, Wifi, Utensils, Waves } from "lucide-react";
 import { ships, shipFeatures } from "@/data/ships";
+import ShipModal from "./ShipModal";
 
 export default function ShipShowcase() {
   const [selectedShip, setSelectedShip] = useState(ships[0]);
+  const [modalShip, setModalShip] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleShipClick = (ship) => {
+    setModalShip(ship);
+    setIsModalOpen(true);
+  };
 
   return (
     <section id="ships" className="py-20 bg-gradient-to-b from-accent/5 to-background">
@@ -88,7 +96,11 @@ export default function ShipShowcase() {
                   <span className="text-xl">{selectedShip.priceRange}</span>
                 </div>
 
-                <Button variant="hero" className="w-full">
+                <Button 
+                  variant="hero" 
+                  className="w-full"
+                  onClick={() => handleShipClick(selectedShip)}
+                >
                   Explore {selectedShip.name}
                   <ChevronRight className="h-4 w-4 ml-2" />
                 </Button>
@@ -103,7 +115,10 @@ export default function ShipShowcase() {
                   className={`group cursor-pointer transition-all duration-300 hover:shadow-elegant hover:scale-105 ${
                     selectedShip.id === ship.id ? 'ring-2 ring-primary/50 bg-accent/10' : 'bg-gradient-card'
                   }`}
-                  onClick={() => setSelectedShip(ship)}
+                  onClick={() => {
+                    setSelectedShip(ship);
+                    handleShipClick(ship);
+                  }}
                 >
                   <CardHeader className="pb-3">
                     <div className="relative">
@@ -255,6 +270,12 @@ export default function ShipShowcase() {
           </Button>
         </div>
       </div>
+
+      <ShipModal 
+        ship={modalShip}
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
     </section>
   );
 }

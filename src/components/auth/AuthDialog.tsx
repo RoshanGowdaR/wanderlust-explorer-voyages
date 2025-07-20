@@ -78,6 +78,7 @@ export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="signin-email"
+                    name="email"
                     type="email"
                     placeholder="Enter your email"
                     className="pl-10 bg-background/50 border-accent/30"
@@ -92,6 +93,7 @@ export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="signin-password"
+                    name="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
                     className="pl-10 pr-10 bg-background/50 border-accent/30"
@@ -121,6 +123,7 @@ export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                   <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="signup-name"
+                    name="fullName"
                     type="text"
                     placeholder="Enter your full name"
                     className="pl-10 bg-background/50 border-accent/30"
@@ -135,6 +138,7 @@ export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="signup-email"
+                    name="email"
                     type="email"
                     placeholder="Enter your email"
                     className="pl-10 bg-background/50 border-accent/30"
@@ -149,6 +153,7 @@ export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="signup-password"
+                    name="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Create a password"
                     className="pl-10 pr-10 bg-background/50 border-accent/30"
