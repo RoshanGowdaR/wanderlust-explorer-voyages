@@ -2,7 +2,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Calendar, MapPin, Star, X } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Users, Calendar, MapPin, Star, X, Camera } from "lucide-react";
 import { Ship } from "@/data/ships";
 
 interface ShipModalProps {
@@ -140,6 +141,29 @@ export default function ShipModal({ ship, open, onOpenChange }: ShipModalProps) 
               </Card>
             </div>
           </div>
+
+          {/* Photo Gallery */}
+          {ship.images && ship.images.length > 0 && (
+            <>
+              <Separator />
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold flex items-center space-x-2">
+                  <Camera className="h-5 w-5" />
+                  <span>Ship Gallery</span>
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+                  {ship.images.slice(0, 10).map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={`${ship.name} ${index + 1}`}
+                      className="w-full h-20 object-cover rounded-md hover:scale-105 transition-transform cursor-pointer"
+                    />
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4">

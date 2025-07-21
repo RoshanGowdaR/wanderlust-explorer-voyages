@@ -24,6 +24,24 @@ import socotra from "@/assets/destinations/socotra.jpg";
 import lofoten from "@/assets/destinations/lofoten.jpg";
 import rajaAmpat from "@/assets/destinations/raja-ampat.jpg";
 
+// Gallery images
+import machupicchugallery1 from "@/assets/destinations/machu-picchu-gallery-1.jpg";
+import machupicchugallery2 from "@/assets/destinations/machu-picchu-gallery-2.jpg";
+import machupicchugallery3 from "@/assets/destinations/machu-picchu-gallery-3.jpg";
+import machupicchugallery4 from "@/assets/destinations/machu-picchu-gallery-4.jpg";
+import greatwallgallery1 from "@/assets/destinations/great-wall-gallery-1.jpg";
+import greatwallgallery2 from "@/assets/destinations/great-wall-gallery-2.jpg";
+import greatwallgallery3 from "@/assets/destinations/great-wall-gallery-3.jpg";
+import greatwallgallery4 from "@/assets/destinations/great-wall-gallery-4.jpg";
+import santorinigallery1 from "@/assets/destinations/santorini-gallery-1.jpg";
+import santorinigallery2 from "@/assets/destinations/santorini-gallery-2.jpg";
+import santorinigallery3 from "@/assets/destinations/santorini-gallery-3.jpg";
+import santorinigallery4 from "@/assets/destinations/santorini-gallery-4.jpg";
+import antarcticagallery1 from "@/assets/destinations/antarctica-gallery-1.jpg";
+import antarcticagallery2 from "@/assets/destinations/antarctica-gallery-2.jpg";
+import antarcticagallery3 from "@/assets/destinations/antarctica-gallery-3.jpg";
+import antarcticagallery4 from "@/assets/destinations/antarctica-gallery-4.jpg";
+
 export interface Destination {
   id: string;
   name: string;
@@ -65,7 +83,7 @@ export const destinations: Destination[] = [
     price: "From $2,500",
     rating: 4.9,
     reviews: 15847,
-    images: [machupicchu, machupicchu, machupicchu, machupicchu, machupicchu, machupicchu, machupicchu, machupicchu, machupicchu, machupicchu],
+    images: [machupicchu, machupicchugallery1, machupicchugallery2, machupicchugallery3, machupicchugallery4, machupicchu, machupicchugallery1, machupicchugallery2, machupicchugallery3, machupicchugallery4],
     history: "Machu Picchu was built in the 15th century during the reign of Inca emperor Pachacuti. This remarkable citadel served as a royal estate and sacred center, showcasing the sophisticated engineering and astronomical knowledge of the Inca civilization. Abandoned during the Spanish conquest, it remained hidden from the outside world until American explorer Hiram Bingham brought it to international attention in 1911.",
     activities: ["Hiking", "Photography", "Cultural tours", "Sunrise viewing", "Local cuisine tasting"],
     climate: "Tropical highland climate with wet and dry seasons",
@@ -90,7 +108,7 @@ export const destinations: Destination[] = [
     price: "From $1,800",
     rating: 4.8,
     reviews: 28451,
-    images: [greatwall, greatwall, greatwall, greatwall, greatwall, greatwall, greatwall, greatwall, greatwall, greatwall],
+    images: [greatwall, greatwallgallery1, greatwallgallery2, greatwallgallery3, greatwallgallery4, greatwall, greatwallgallery1, greatwallgallery2, greatwallgallery3, greatwallgallery4],
     history: "The Great Wall of China represents over 2,000 years of military engineering and construction. While sections were built by various states during the 7th century BC, the most famous portions were constructed during the Ming Dynasty (1368-1644). Built primarily for defense against northern invasions, the wall employed millions of workers including soldiers, peasants, and prisoners.",
     activities: ["Wall hiking", "Historical exploration", "Photography", "Cable car rides", "Cultural museums"],
     climate: "Continental climate with hot summers and cold winters",
@@ -115,7 +133,7 @@ export const destinations: Destination[] = [
     price: "From $3,200",
     rating: 4.7,
     reviews: 19283,
-    images: [santorini, santorini, santorini, santorini, santorini, santorini, santorini, santorini, santorini, santorini],
+    images: [santorini, santorinigallery1, santorinigallery2, santorinigallery3, santorinigallery4, santorini, santorinigallery1, santorinigallery2, santorinigallery3, santorinigallery4],
     history: "Santorini's dramatic landscape was shaped by one of history's most significant volcanic eruptions around 1600 BC, which destroyed the advanced Minoan civilization and possibly inspired Plato's Atlantis legend. The island's distinctive architecture developed as a practical response to the environment, with cave houses carved into volcanic rock providing natural insulation.",
     activities: ["Sunset viewing", "Wine tasting", "Beach relaxation", "Boat tours", "Archaeological sites"],
     climate: "Mediterranean climate with warm, dry summers and mild winters",
@@ -190,7 +208,7 @@ export const destinations: Destination[] = [
     price: "From $12,000",
     rating: 4.9,
     reviews: 5847,
-    images: [antarctica, antarctica, antarctica, antarctica, antarctica, antarctica, antarctica, antarctica, antarctica, antarctica],
+    images: [antarctica, antarcticagallery1, antarcticagallery2, antarcticagallery3, antarcticagallery4, antarctica, antarcticagallery1, antarcticagallery2, antarcticagallery3, antarcticagallery4],
     history: "Antarctica was the last continent to be discovered, first sighted in 1820 by Russian, British, and American expeditions. The heroic age of Antarctic exploration in the early 1900s saw legendary expeditions by Ernest Shackleton, Robert Falcon Scott, and Roald Amundsen.",
     activities: ["Wildlife viewing", "Zodiac landings", "Photography", "Educational lectures", "Polar plunge"],
     climate: "Polar climate with extreme conditions and 24-hour daylight in summer",

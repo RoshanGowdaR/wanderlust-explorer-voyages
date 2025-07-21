@@ -20,6 +20,12 @@ import expeditionShip18 from "@/assets/ships/expedition-ship-18.jpg";
 import expeditionShip19 from "@/assets/ships/expedition-ship-19.jpg";
 import expeditionShip20 from "@/assets/ships/expedition-ship-20.jpg";
 
+// Ship gallery images
+import shipGalleryDining from "@/assets/ships/ship-gallery-dining.jpg";
+import shipGallerySuite from "@/assets/ships/ship-gallery-suite.jpg";
+import shipGalleryLounge from "@/assets/ships/ship-gallery-lounge.jpg";
+import shipGallerySpa from "@/assets/ships/ship-gallery-spa.jpg";
+
 export interface Ship {
   id: string;
   name: string;
@@ -41,6 +47,7 @@ export interface Ship {
   expeditionAreas: string[];
   priceRange: string;
   rating: number;
+  images?: string[];
 }
 
 export const ships: Ship[] = [
@@ -89,7 +96,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Antarctica", "Arctic", "Patagonia", "Norwegian Fjords"],
     priceRange: "$15,000 - $45,000",
-    rating: 4.9
+    rating: 4.9,
+    images: [shipInterior, shipGalleryDining, shipGallerySuite, shipGalleryLounge, shipGallerySpa]
   },
   {
     id: "ocean-adventurer",
@@ -136,7 +144,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Arctic", "Greenland", "Svalbard", "Canadian Arctic"],
     priceRange: "$12,000 - $35,000",
-    rating: 4.8
+    rating: 4.8,
+    images: [expeditionShip9, shipGalleryLounge, shipGallerySuite, shipGalleryDining, shipGallerySpa]
   },
   {
     id: "polar-pioneer",
@@ -183,7 +192,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Antarctica", "Arctic", "Remote Islands", "Exclusive Destinations"],
     priceRange: "$25,000 - $75,000",
-    rating: 5.0
+    rating: 5.0,
+    images: [expeditionShip10, shipGallerySpa, shipGallerySuite, shipGalleryLounge, shipGalleryDining]
   },
   {
     id: "arctic-explorer",
