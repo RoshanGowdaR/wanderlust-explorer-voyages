@@ -9,8 +9,12 @@ import BookingCTA from "@/components/BookingCTA";
 import Contact from "@/components/Contact";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
+import BookingDialog from "@/components/BookingDialog";
+import { useBooking } from "@/hooks/useBooking";
 
 const Index = () => {
+  const { isBookingOpen, selectedItem, closeBooking } = useBooking();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -26,6 +30,12 @@ const Index = () => {
         <Newsletter />
       </main>
       <Footer />
+      
+      <BookingDialog
+        open={isBookingOpen}
+        onOpenChange={closeBooking}
+        item={selectedItem}
+      />
     </div>
   );
 };

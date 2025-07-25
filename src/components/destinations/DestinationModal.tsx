@@ -2,8 +2,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Star, MapPin, Clock, Users, Calendar, Camera, Heart } from "lucide-react";
+import { Star, MapPin, Clock, Users, Calendar, Camera, Heart, Share } from "lucide-react";
 import { Destination } from "@/data/destinations";
+import { useBooking } from "@/hooks/useBooking";
+import { useWishlist } from "@/hooks/useWishlist";
+import { useShare } from "@/hooks/useShare";
 
 interface DestinationModalProps {
   destination: Destination | null;
@@ -12,11 +15,27 @@ interface DestinationModalProps {
 }
 
 export default function DestinationModal({ destination, open, onOpenChange }: DestinationModalProps) {
+  const { openBooking } = useBooking();
+  const { addToWishlist, isInWishlist } = useWishlist();
+  const { shareItem } = useShare();
+
   if (!destination) return null;
+
+  const handleBookExpedition = () => {
+    openBooking(destination, 'destination');
+  };
+
+  const handleAddToWishlist = () => {
+    addToWishlist(destination, 'destination');
+  };
+
+  const handleShare = () => {
+    shareItem(destination, 'destination');
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-card backdrop-blur-md border-accent/30">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-card backdrop-blur-md border-accent/30" aria-describedby="destination-description">
         <DialogHeader>
           <div className="relative">
             <img
@@ -71,7 +90,7 @@ export default function DestinationModal({ destination, open, onOpenChange }: De
           {/* Description */}
           <div>
             <h3 className="text-xl font-semibold mb-3">About This Destination</h3>
-            <p className="text-muted-foreground leading-relaxed">{destination.description}</p>
+            <p id="destination-description" className="text-muted-foreground leading-relaxed">{destination.description}</p>
           </div>
 
           {/* History */}
@@ -139,14 +158,19 @@ export default function DestinationModal({ destination, open, onOpenChange }: De
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 pt-4">
-            <Button variant="hero" className="flex-1">
+            <Button variant="hero" className="flex-1" onClick={handleBookExpedition}>
               Book This Expedition
             </Button>
-            <Button variant="outline" className="flex-1">
-              <Heart className="h-4 w-4 mr-2" />
-              Add to Wishlist
+            <Button 
+              variant="outline" 
+              className="flex-1"
+              onClick={handleAddToWishlist}
+            >
+              <Heart className={`h-4 w-4 mr-2 ${isInWishlist(destination.id, 'destination') ? 'fill-current text-red-500' : ''}`} />
+              {isInWishlist(destination.id, 'destination') ? 'In Wishlist' : 'Add to Wishlist'}
             </Button>
-            <Button variant="ghost">
+            <Button variant="ghost" onClick={handleShare}>
+              <Share className="h-4 w-4 mr-2" />
               Share Destination
             </Button>
           </div>

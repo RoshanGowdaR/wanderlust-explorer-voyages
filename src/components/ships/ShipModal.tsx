@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Users, Calendar, MapPin, Star, X, Camera } from "lucide-react";
 import { Ship } from "@/data/ships";
+import { useBooking } from "@/hooks/useBooking";
 
 interface ShipModalProps {
   ship: Ship | null;
@@ -13,11 +14,17 @@ interface ShipModalProps {
 }
 
 export default function ShipModal({ ship, open, onOpenChange }: ShipModalProps) {
+  const { openBooking } = useBooking();
+
   if (!ship) return null;
+
+  const handleBookExpedition = () => {
+    openBooking(ship, 'ship');
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-gradient-card backdrop-blur-md border-accent/30">
+      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-gradient-card backdrop-blur-md border-accent/30" aria-describedby="ship-description">
         <DialogHeader className="relative">
           <Button
             variant="ghost"
@@ -82,7 +89,7 @@ export default function ShipModal({ ship, open, onOpenChange }: ShipModalProps) 
           {/* Description */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">About {ship.name}</h3>
-            <p className="text-muted-foreground leading-relaxed">{ship.description}</p>
+            <p id="ship-description" className="text-muted-foreground leading-relaxed">{ship.description}</p>
           </div>
 
           {/* Features */}
@@ -167,7 +174,7 @@ export default function ShipModal({ ship, open, onOpenChange }: ShipModalProps) 
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
-            <Button variant="expedition" className="flex-1">
+            <Button variant="expedition" className="flex-1" onClick={handleBookExpedition}>
               Book This Expedition
             </Button>
             <Button variant="outline" className="flex-1">

@@ -3,8 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Users, Star, Clock, MapPin } from "lucide-react";
 import { expeditions } from "@/data/expeditions";
+import { useBooking } from "@/hooks/useBooking";
 
 export default function ExpeditionGrid() {
+  const { openBooking } = useBooking();
+
+  const handleBookExpedition = (expedition: any) => {
+    openBooking(expedition, 'expedition');
+  };
+
   return (
     <section id="expeditions" className="py-24 bg-gradient-subtle">
       <div className="container mx-auto px-6">
@@ -103,7 +110,11 @@ export default function ExpeditionGrid() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2 pt-4">
-                    <Button variant="expedition" className="flex-1">
+                    <Button 
+                      variant="expedition" 
+                      className="flex-1"
+                      onClick={() => handleBookExpedition(expedition)}
+                    >
                       Book Now
                     </Button>
                     <Button variant="outline" className="flex-1">
