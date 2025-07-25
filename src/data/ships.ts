@@ -240,7 +240,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Arctic", "Antarctica", "Sub-Antarctic", "North Atlantic"],
     priceRange: "$13,000 - $40,000",
-    rating: 4.7
+    rating: 4.7,
+    images: [expeditionShip11, expeditionShip12, expeditionShip13, expeditionShip14, expeditionShip15]
   },
   {
     id: "expedition-classic",
@@ -287,7 +288,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Greenland", "Arctic Canada", "Svalbard", "Iceland"],
     priceRange: "$10,000 - $28,000",
-    rating: 4.6
+    rating: 4.6,
+    images: [expeditionShip12, expeditionShip16, expeditionShip17, expeditionShip18, expeditionShip19]
   },
   {
     id: "southern-explorer",
@@ -334,7 +336,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Antarctica", "Sub-Antarctic Islands", "Patagonia", "Chilean Fjords"],
     priceRange: "$14,000 - $42,000",
-    rating: 4.8
+    rating: 4.8,
+    images: [expeditionShip13, expeditionShip1, expeditionShip2, expeditionShip3, expeditionShip4]
   },
   {
     id: "adventure-seeker",
@@ -381,7 +384,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Remote Arctic", "Antarctic Peninsula", "Isolated Islands", "Unexplored Regions"],
     priceRange: "$16,000 - $48,000",
-    rating: 4.9
+    rating: 4.9,
+    images: [expeditionShip14, expeditionShip5, expeditionShip6, expeditionShip7, expeditionShip8]
   },
   {
     id: "luxury-voyager",
@@ -428,7 +432,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Luxury Arctic", "Premium Antarctica", "Exclusive Destinations", "Private Charters"],
     priceRange: "$30,000 - $85,000",
-    rating: 5.0
+    rating: 5.0,
+    images: [expeditionShip15, expeditionShip20, expeditionShip1, expeditionShip2, expeditionShip3]
   },
   {
     id: "nordic-spirit",
@@ -475,7 +480,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Norwegian Fjords", "Greenland", "Arctic Norway", "Nordic Seas"],
     priceRange: "$13,500 - $38,000",
-    rating: 4.8
+    rating: 4.8,
+    images: [expeditionShip16, expeditionShip4, expeditionShip5, expeditionShip6, expeditionShip7]
   },
   {
     id: "discovery-quest",
@@ -522,7 +528,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Antarctica", "Arctic", "Remote Destinations", "Research Expeditions"],
     priceRange: "$14,500 - $41,000",
-    rating: 4.7
+    rating: 4.7,
+    images: [expeditionShip17, expeditionShip8, expeditionShip9, expeditionShip10, expeditionShip11]
   },
   {
     id: "heritage-explorer",
@@ -569,7 +576,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Historic Routes", "Cultural Expeditions", "Arctic Heritage", "Maritime History"],
     priceRange: "$12,500 - $34,000",
-    rating: 4.6
+    rating: 4.6,
+    images: [expeditionShip18, expeditionShip12, expeditionShip13, expeditionShip14, expeditionShip15]
   },
   {
     id: "wilderness-pioneer",
@@ -616,7 +624,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Remote Wilderness", "Wildlife Sanctuaries", "Pristine Environments", "Research Areas"],
     priceRange: "$17,000 - $52,000",
-    rating: 4.9
+    rating: 4.9,
+    images: [expeditionShip19, expeditionShip16, expeditionShip17, expeditionShip18, expeditionShip1]
   },
   {
     id: "polar-luxury",
@@ -663,7 +672,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Luxury Polar", "Premium Arctic", "Exclusive Antarctica", "High-end Expeditions"],
     priceRange: "$28,000 - $78,000",
-    rating: 4.9
+    rating: 4.9,
+    images: [expeditionShip20, expeditionShip2, expeditionShip3, expeditionShip4, expeditionShip5]
   },
   {
     id: "expedition-master",
@@ -710,7 +720,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Multiple Regions", "Comprehensive Expeditions", "Educational Tours", "Family Expeditions"],
     priceRange: "$11,000 - $35,000",
-    rating: 4.5
+    rating: 4.5,
+    images: [expeditionShip8, expeditionShip6, expeditionShip7, expeditionShip9, expeditionShip10]
   },
   {
     id: "ice-navigator",
@@ -757,7 +768,8 @@ export const ships: Ship[] = [
     ],
     expeditionAreas: ["Extreme Polar", "Heavy Ice Regions", "Research Expeditions", "Challenging Destinations"],
     priceRange: "$18,000 - $55,000",
-    rating: 4.8
+    rating: 4.8,
+    images: [expeditionShip1, expeditionShip11, expeditionShip12, expeditionShip13, expeditionShip14]
   },
   {
     id: "arctic-majesty",
@@ -772,7 +784,8 @@ export const ships: Ship[] = [
     amenities: ["Elegant restaurant", "Arctic lounge", "Spa center", "Library"],
     expeditionAreas: ["Arctic Circle", "Greenland", "Svalbard"],
     priceRange: "$16,000 - $48,000",
-    rating: 4.8
+    rating: 4.8,
+    images: [expeditionShip2, expeditionShip15, expeditionShip16, expeditionShip17, expeditionShip18]
   },
   {
     id: "polar-crown",
@@ -787,7 +800,8 @@ export const ships: Ship[] = [
     amenities: ["Premium dining", "Luxury lounge", "Wellness spa", "Observatory"],
     expeditionAreas: ["Antarctica", "Arctic", "Remote Islands"],
     priceRange: "$22,000 - $65,000",
-    rating: 4.9
+    rating: 4.9,
+    images: [expeditionShip3, expeditionShip19, expeditionShip20, expeditionShip1, expeditionShip2]
   },
   {
     id: "expedition-elite",
@@ -802,7 +816,8 @@ export const ships: Ship[] = [
     amenities: ["Elite dining", "Adventure lounge", "Fitness center", "Spa"],
     expeditionAreas: ["Worldwide Expeditions", "Premium Destinations"],
     priceRange: "$17,500 - $52,000",
-    rating: 4.7
+    rating: 4.7,
+    images: [expeditionShip4, expeditionShip3, expeditionShip5, expeditionShip6, expeditionShip7]
   },
   {
     id: "nordic-legend",
@@ -817,7 +832,8 @@ export const ships: Ship[] = [
     amenities: ["Nordic restaurant", "Legend lounge", "Cultural center", "Library"],
     expeditionAreas: ["Nordic Seas", "Greenland", "Arctic Norway"],
     priceRange: "$15,500 - $45,000",
-    rating: 4.8
+    rating: 4.8,
+    images: [expeditionShip5, expeditionShip8, expeditionShip9, expeditionShip10, expeditionShip11]
   },
   {
     id: "antarctic-star",
@@ -832,7 +848,8 @@ export const ships: Ship[] = [
     amenities: ["Research dining", "Star observatory", "Tech center", "Wildlife deck"],
     expeditionAreas: ["Antarctica", "Sub-Antarctic", "Southern Ocean"],
     priceRange: "$19,000 - $58,000",
-    rating: 4.9
+    rating: 4.9,
+    images: [expeditionShip6, expeditionShip12, expeditionShip13, expeditionShip14, expeditionShip15]
   },
   {
     id: "ultimate-explorer",
@@ -847,7 +864,8 @@ export const ships: Ship[] = [
     amenities: ["Ultimate dining", "Global lounge", "Premium spa", "Entertainment"],
     expeditionAreas: ["Global Destinations", "All Regions", "Comprehensive Tours"],
     priceRange: "$14,000 - $42,000",
-    rating: 4.7
+    rating: 4.7,
+    images: [expeditionShip7, expeditionShip16, expeditionShip17, expeditionShip18, expeditionShip19]
   }
 ];
 

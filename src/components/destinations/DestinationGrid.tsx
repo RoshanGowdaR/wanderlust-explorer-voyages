@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Users, ChevronRight } from "lucide-react";
 import { destinations } from "@/data/destinations";
 import DestinationModal from "./DestinationModal";
-import AuthDialog from "@/components/auth/AuthDialog";
+import SlidingAuthDialog from "@/components/auth/SlidingAuthDialog";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
@@ -158,7 +158,7 @@ export default function DestinationGrid() {
         </div>
       </section>
 
-      <AuthDialog 
+      <SlidingAuthDialog 
         open={isAuthOpen} 
         onOpenChange={(open) => {
           setIsAuthOpen(open);

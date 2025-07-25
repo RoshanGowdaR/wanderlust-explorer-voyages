@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Play, Star } from "lucide-react";
 import heroImage from "@/assets/hero-expedition.jpg";
-import AuthDialog from "@/components/auth/AuthDialog";
+import SlidingAuthDialog from "@/components/auth/SlidingAuthDialog";
 
 export default function Hero() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -83,7 +83,7 @@ export default function Hero() {
         </div>
       </section>
 
-      <AuthDialog open={isAuthOpen} onOpenChange={setIsAuthOpen} />
+      <SlidingAuthDialog open={isAuthOpen} onOpenChange={setIsAuthOpen} />
     </>
   );
 }

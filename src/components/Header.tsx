@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Menu, X, Compass, User as UserIcon, LogOut } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import AuthDialog from "@/components/auth/AuthDialog";
+import SlidingAuthDialog from "@/components/auth/SlidingAuthDialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { User } from "@supabase/supabase-js";
@@ -185,7 +185,7 @@ export default function Header() {
         </div>
       </header>
 
-      <AuthDialog open={isAuthOpen} onOpenChange={setIsAuthOpen} />
+      <SlidingAuthDialog open={isAuthOpen} onOpenChange={setIsAuthOpen} />
     </>
   );
 }
