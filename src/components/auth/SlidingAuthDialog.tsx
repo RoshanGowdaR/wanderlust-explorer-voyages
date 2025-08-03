@@ -141,7 +141,7 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-4xl max-h-[90vh] p-0 overflow-hidden bg-background/95 backdrop-blur-md border-accent/30">
-        <div className="relative w-full h-[600px] overflow-hidden">
+        <div className="relative w-full h-[600px] sm:h-[600px] overflow-hidden">{/* Made height responsive */}
           {/* Close button */}
           <Button
             variant="ghost"
@@ -154,15 +154,15 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
 
           {/* Sliding panel container */}
           <div className="relative w-full h-full flex">
-            {/* Left side - Purple curved panel */}
+            {/* Left side - Purple curved panel - Hidden on mobile */}
             <div 
-              className={`absolute inset-y-0 w-1/2 z-20 transition-all duration-700 ease-in-out ${
+              className={`absolute inset-y-0 w-1/2 z-20 transition-all duration-700 ease-in-out hidden sm:block ${
                 isSignUp ? 'translate-x-full' : 'translate-x-0'
               }`}
             >
               <div className="relative h-full bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white flex items-center justify-center">
-                {/* Curved edge */}
-                <div className="absolute right-0 top-0 w-20 h-full">
+                {/* Curved edge - Hidden on mobile */}
+                <div className="absolute right-0 top-0 w-20 h-full hidden sm:block">
                   <svg
                     viewBox="0 0 100 600"
                     className="h-full w-full"
@@ -209,15 +209,33 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
               </div>
             </div>
 
-            {/* Right side form container */}
+            {/* Right side form container - Full width on mobile */}
             <div className="w-full h-full flex">
               {/* Sign In Form */}
               <div 
-                className={`w-1/2 h-full flex items-center justify-center bg-background transition-all duration-700 ease-in-out ${
-                  isSignUp ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100'
+                className={`w-full sm:w-1/2 h-full flex items-center justify-center bg-background transition-all duration-700 ease-in-out ${
+                  isSignUp ? 'hidden sm:block sm:-translate-x-full sm:opacity-0' : 'block sm:translate-x-0 sm:opacity-100'
                 }`}
               >
                 <div className="w-full max-w-sm px-8">
+                  {/* Mobile toggle buttons */}
+                  <div className="sm:hidden mb-6 flex space-x-2">
+                    <Button
+                      variant={!isSignUp ? "default" : "outline"}
+                      className="flex-1"
+                      onClick={() => setIsSignUp(false)}
+                    >
+                      Sign In
+                    </Button>
+                    <Button
+                      variant={isSignUp ? "default" : "outline"}
+                      className="flex-1"
+                      onClick={() => setIsSignUp(true)}
+                    >
+                      Sign Up
+                    </Button>
+                  </div>
+                  
                   <div className="text-center mb-8">
                     <h2 className="text-2xl font-bold mb-2">Sign In</h2>
                     <Button
@@ -280,11 +298,29 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
 
               {/* Sign Up Form */}
               <div 
-                className={`w-1/2 h-full flex items-center justify-center bg-background transition-all duration-700 ease-in-out ${
-                  isSignUp ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+                className={`w-full sm:w-1/2 h-full flex items-center justify-center bg-background transition-all duration-700 ease-in-out ${
+                  isSignUp ? 'block sm:translate-x-0 sm:opacity-100' : 'hidden sm:block sm:translate-x-full sm:opacity-0'
                 }`}
               >
                 <div className="w-full max-w-sm px-8">
+                  {/* Mobile toggle buttons */}
+                  <div className="sm:hidden mb-6 flex space-x-2">
+                    <Button
+                      variant={!isSignUp ? "default" : "outline"}
+                      className="flex-1"
+                      onClick={() => setIsSignUp(false)}
+                    >
+                      Sign In
+                    </Button>
+                    <Button
+                      variant={isSignUp ? "default" : "outline"}
+                      className="flex-1"
+                      onClick={() => setIsSignUp(true)}
+                    >
+                      Sign Up
+                    </Button>
+                  </div>
+                  
                   <div className="text-center mb-8">
                     <h2 className="text-2xl font-bold mb-2">Create Account</h2>
                     <Button
