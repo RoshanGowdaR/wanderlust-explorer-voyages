@@ -15,31 +15,93 @@ export default function Header() {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
+    // Clean up any corrupted auth state first
+    const cleanupAuthState = () => {
+      Object.keys(localStorage).forEach((key) => {
+        if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+          localStorage.removeItem(key);
+        }
+      });
+      try {
+        Object.keys(sessionStorage || {}).forEach((key) => {
+          if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+            sessionStorage.removeItem(key);
+          }
+        });
+      } catch (error) {
+        // Session storage might not be available
+      }
+    };
 
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-        if (event === 'SIGNED_IN') {
-          setIsAuthOpen(false);
+    // Listen for auth changes first
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth state changed:', event, session?.user?.email);
+      setUser(session?.user ?? null);
+      
+      if (event === 'SIGNED_IN') {
+        setIsAuthOpen(false);
+      }
+      
+      if (event === 'SIGNED_OUT' || event === 'TOKEN_REFRESHED') {
+        if (!session) {
+          cleanupAuthState();
         }
       }
-    );
+    });
+
+    // Then get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    }).catch((error) => {
+      console.error('Error getting session:', error);
+      cleanupAuthState();
+      setUser(null);
+    });
 
     return () => subscription.unsubscribe();
   }, []);
 
   const handleSignOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-      toast({ title: "Signed out", description: "You've been signed out successfully." });
+      // Clean up auth state first
+      Object.keys(localStorage).forEach((key) => {
+        if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+          localStorage.removeItem(key);
+        }
+      });
+      
+      try {
+        Object.keys(sessionStorage || {}).forEach((key) => {
+          if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+            sessionStorage.removeItem(key);
+          }
+        });
+      } catch (error) {
+        // Session storage might not be available
+      }
+
+      // Attempt global sign out
+      try {
+        await supabase.auth.signOut({ scope: 'global' });
+      } catch (err) {
+        // Continue even if this fails
+      }
+      
+      toast({
+        title: "Signed out successfully",
+        description: "You have been signed out of your account.",
+      });
+      
+      // Force page reload for clean state
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 500);
     } catch (error: any) {
-      toast({ title: "Error", description: error.message, variant: "destructive" });
+      toast({
+        title: "Error signing out",
+        description: error.message,
+        variant: "destructive",
+      });
     }
   };
 

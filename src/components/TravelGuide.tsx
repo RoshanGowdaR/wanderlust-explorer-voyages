@@ -81,11 +81,25 @@ export default function TravelGuide() {
                   {guide.description}
                 </p>
                 <div className="flex space-x-2">
-                  <Button variant="outline" className="flex-1">
+                  <Button 
+                    variant="outline" 
+                    className="flex-1"
+                    onClick={() => {
+                      window.open('#', '_blank');
+                      // In a real app, this would navigate to the guide
+                    }}
+                  >
                     <BookOpen className="h-4 w-4 mr-2" />
                     Read Guide
                   </Button>
-                  <Button variant="ghost" size="icon">
+                  <Button 
+                    variant="ghost" 
+                    size="icon"
+                    onClick={() => {
+                      // In a real app, this would trigger download
+                      alert('Download functionality would be implemented here');
+                    }}
+                  >
                     <Download className="h-4 w-4" />
                   </Button>
                 </div>
@@ -95,7 +109,14 @@ export default function TravelGuide() {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="expedition" size="lg">
+          <Button 
+            variant="expedition" 
+            size="lg"
+            onClick={() => {
+              // In a real app, this would navigate to all guides page
+              alert('All guides page would be implemented here');
+            }}
+          >
             View All Guides
           </Button>
         </div>

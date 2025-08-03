@@ -28,9 +28,37 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
+    // Clean up existing auth state first
+    const cleanupAuthState = () => {
+      Object.keys(localStorage).forEach((key) => {
+        if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+          localStorage.removeItem(key);
+        }
+      });
+      try {
+        Object.keys(sessionStorage || {}).forEach((key) => {
+          if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+            sessionStorage.removeItem(key);
+          }
+        });
+      } catch (error) {
+        // Session storage might not be available
+      }
+    };
+
     try {
       if (type === 'signin') {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        // Clean up state before signing in
+        cleanupAuthState();
+        
+        // Attempt global sign out first
+        try {
+          await supabase.auth.signOut({ scope: 'global' });
+        } catch (err) {
+          // Continue even if this fails
+        }
+
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) {
           if (error.message.includes('email not confirmed')) {
             toast({ 
@@ -42,9 +70,19 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
           }
           throw error;
         }
-        toast({ title: "Welcome back!", description: "You've been signed in successfully." });
-        onOpenChange(false);
+        
+        if (data.user) {
+          toast({ title: "Welcome back!", description: "You've been signed in successfully." });
+          onOpenChange(false);
+          // Force page reload for clean state
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 500);
+        }
       } else {
+        // Clean up state before signing up
+        cleanupAuthState();
+        
         const { data, error } = await supabase.auth.signUp({ 
           email, 
           password,
@@ -58,12 +96,17 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
             description: "We've sent you a verification link. Please verify your email before signing in." 
           });
           onOpenChange(false);
-        } else {
-          toast({ title: "Account created!", description: "You can now sign in to your account." });
+        } else if (data.session) {
+          toast({ title: "Account created!", description: "Welcome to your expedition journey!" });
           onOpenChange(false);
+          // Force page reload for clean state
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 500);
         }
       }
     } catch (error: any) {
+      console.error('Auth error:', error);
       toast({ title: "Error", description: error.message, variant: "destructive" });
     } finally {
       setIsLoading(false);
@@ -73,6 +116,13 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
   const handleGoogleAuth = async () => {
     setIsLoading(true);
     try {
+      // Clean up auth state first
+      Object.keys(localStorage).forEach((key) => {
+        if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+          localStorage.removeItem(key);
+        }
+      });
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -81,6 +131,7 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
       });
       if (error) throw error;
     } catch (error: any) {
+      console.error('Google auth error:', error);
       toast({ title: "Error", description: error.message, variant: "destructive" });
     } finally {
       setIsLoading(false);

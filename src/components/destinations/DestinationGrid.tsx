@@ -17,22 +17,23 @@ export default function DestinationGrid() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // Listen for auth changes first
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
+      if (event === 'SIGNED_IN' && selectedDestination) {
+        // Show destination modal after successful authentication
+        setIsAuthOpen(false);
+        setIsModalOpen(true);
+      }
     });
 
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-        if (event === 'SIGNED_IN' && selectedDestination) {
-          // Show destination modal after successful authentication
-          setIsAuthOpen(false);
-          setIsModalOpen(true);
-        }
-      }
-    );
+    // Then get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    }).catch((error) => {
+      console.error('Error getting session:', error);
+      setUser(null);
+    });
 
     return () => subscription.unsubscribe();
   }, [selectedDestination]);
