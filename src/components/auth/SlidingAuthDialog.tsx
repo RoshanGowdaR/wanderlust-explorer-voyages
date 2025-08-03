@@ -156,7 +156,7 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
           <div className="relative w-full h-full flex">
             {/* Left side - Purple curved panel - Hidden on mobile */}
             <div 
-              className={`absolute inset-y-0 w-1/2 z-20 transition-all duration-700 ease-in-out hidden sm:block ${
+              className={`absolute inset-y-0 w-1/2 z-20 transition-all duration-[1200ms] ease-in-out hidden sm:block ${
                 isSignUp ? 'translate-x-full' : 'translate-x-0'
               }`}
             >
@@ -213,7 +213,7 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
             <div className="w-full h-full flex">
               {/* Sign In Form */}
               <div 
-                className={`w-full sm:w-1/2 h-full flex items-center justify-center bg-background transition-all duration-700 ease-in-out ${
+                className={`w-full sm:w-1/2 h-full flex items-center justify-center bg-background transition-all duration-[1200ms] ease-in-out ${
                   isSignUp ? 'hidden sm:block sm:-translate-x-full sm:opacity-0' : 'block sm:translate-x-0 sm:opacity-100'
                 }`}
               >
@@ -298,7 +298,7 @@ export default function SlidingAuthDialog({ open, onOpenChange }: SlidingAuthDia
 
               {/* Sign Up Form */}
               <div 
-                className={`w-full sm:w-1/2 h-full flex items-center justify-center bg-background transition-all duration-700 ease-in-out ${
+                className={`w-full sm:w-1/2 h-full flex items-center justify-center bg-background transition-all duration-[1200ms] ease-in-out ${
                   isSignUp ? 'block sm:translate-x-0 sm:opacity-100' : 'hidden sm:block sm:translate-x-full sm:opacity-0'
                 }`}
               >
