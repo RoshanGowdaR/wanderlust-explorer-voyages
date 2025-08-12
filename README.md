@@ -33,7 +33,7 @@ Wanderlust Explorer is a comprehensive travel platform that specializes in exped
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm or yarn package manager
 
 ### Installation
@@ -61,19 +61,18 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 npm run dev
 ```
 
-5. Open your browser and navigate to `http://localhost:8080`
+5. Open your browser and navigate to `http://localhost:5173`
 
 ## 🛠️ Technology Stack
 
 - **Frontend Framework**: React 18 with TypeScript
 - **Styling**: Tailwind CSS with custom design system
-- **UI Components**: shadcn/ui component library
+- **UI Components**: Modern component library
 - **Icons**: Lucide React
 - **Charts**: Recharts for data visualization
 - **Authentication**: Supabase Auth with Google OAuth
 - **Database**: Supabase (PostgreSQL)
 - **Build Tool**: Vite
-- **State Management**: React Query (TanStack Query)
 
 ## 📱 Key Sections
 
@@ -103,13 +102,12 @@ npm run dev
 
 ## 🎨 Design System
 
-The application features a custom design system with:
+The application features a modern design system with:
 - Ocean-inspired color palette
-- Elegant animations and transitions
+- Smooth transitions and interactions
 - Responsive grid layouts
 - Consistent typography and spacing
-- Glass morphism effects
-- Custom gradients and shadows
+- Beautiful gradients and shadows
 
 ## 📦 Deployment
 
@@ -134,12 +132,6 @@ npm run preview
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🌟 Acknowledgments
-
-- Beautiful destination imagery from professional travel photographers
-- UI inspiration from modern travel platforms
-- Icons and illustrations from the Lucide icon library
 
 ---
 

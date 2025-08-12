@@ -132,12 +132,12 @@ export default function SimpleAuthDialog({ open, onOpenChange }: SimpleAuthDialo
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md bg-background border">
-        <div className="relative p-6">
+      <DialogContent className="sm:max-w-md">
+        <div className="p-6">
           <Button
             variant="ghost"
             size="icon"
-            className="absolute top-2 right-2"
+            className="absolute top-4 right-4"
             onClick={() => onOpenChange(false)}
           >
             <X className="h-4 w-4" />
@@ -148,20 +148,20 @@ export default function SimpleAuthDialog({ open, onOpenChange }: SimpleAuthDialo
               {isSignUp ? "Create Account" : "Sign In"}
             </h2>
             <p className="text-sm text-muted-foreground">
-              {isSignUp ? "Create your account to start exploring" : "Welcome back! Please sign in to continue"}
+              {isSignUp ? "Join our expedition community" : "Welcome back to your adventure"}
             </p>
           </div>
 
-          <div className="flex space-x-2 mb-6">
+          <div className="flex mb-6 bg-muted rounded-lg p-1">
             <Button
-              variant={!isSignUp ? "default" : "outline"}
+              variant={!isSignUp ? "default" : "ghost"}
               className="flex-1"
               onClick={() => setIsSignUp(false)}
             >
               Sign In
             </Button>
             <Button
-              variant={isSignUp ? "default" : "outline"}
+              variant={isSignUp ? "default" : "ghost"}
               className="flex-1"
               onClick={() => setIsSignUp(true)}
             >
@@ -195,31 +195,25 @@ export default function SimpleAuthDialog({ open, onOpenChange }: SimpleAuthDialo
 
           <form onSubmit={(e) => handleAuth(e, isSignUp ? 'signup' : 'signin')} className="space-y-4">
             {isSignUp && (
-              <div>
-                <Input
-                  name="fullName"
-                  type="text"
-                  placeholder="Full Name"
-                  required
-                />
-              </div>
+              <Input
+                name="fullName"
+                type="text"
+                placeholder="Full Name"
+                required
+              />
             )}
-            <div>
-              <Input
-                name="email"
-                type="email"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div>
-              <Input
-                name="password"
-                type="password"
-                placeholder="Password"
-                required
-              />
-            </div>
+            <Input
+              name="email"
+              type="email"
+              placeholder="Email"
+              required
+            />
+            <Input
+              name="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
 
             {isSignUp && (
               <div className="flex items-center space-x-2">
