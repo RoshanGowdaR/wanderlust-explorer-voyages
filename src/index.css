@@ -152,7 +152,8 @@ All colors MUST be HSL for consistency.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-ocean text-foreground min-h-screen;
+    background-attachment: fixed;
   }
 }
 
