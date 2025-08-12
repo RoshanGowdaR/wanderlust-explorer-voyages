@@ -1,9 +1,10 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Menu, X, Compass, User as UserIcon, LogOut } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import SlidingAuthDialog from "@/components/auth/SlidingAuthDialog";
+import SimpleAuthDialog from "@/components/auth/SimpleAuthDialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { User } from "@supabase/supabase-js";
@@ -247,7 +248,7 @@ export default function Header() {
         </div>
       </header>
 
-      <SlidingAuthDialog open={isAuthOpen} onOpenChange={setIsAuthOpen} />
+      <SimpleAuthDialog open={isAuthOpen} onOpenChange={setIsAuthOpen} />
     </>
   );
 }

@@ -1,73 +1,146 @@
-# Welcome to your Lovable project
 
-## Project info
+# Wanderlust Explorer - Expedition Travel Platform
 
-**URL**: https://lovable.dev/projects/510b834d-fd46-464b-a72f-9f3601aacf56
+A modern, responsive web application for exploring and booking expedition travel experiences to exotic destinations around the world.
 
-## How can I edit this code?
+## 🌍 About the Project
 
-There are several ways of editing your application.
+Wanderlust Explorer is a comprehensive travel platform that specializes in expedition voyages to remote and extraordinary destinations. Our platform connects adventure seekers with curated expedition experiences, from Antarctic expeditions to remote island explorations.
 
-**Use Lovable**
+## ✨ Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/510b834d-fd46-464b-a72f-9f3601aacf56) and start prompting.
+### 🎯 Core Features
+- **Destination Discovery**: Browse and explore exotic destinations with detailed information and stunning imagery
+- **Expedition Booking**: Complete booking system for expedition voyages with real-time availability
+- **Ship Showcase**: Detailed information about expedition vessels and their capabilities
+- **User Authentication**: Secure login/signup system with Google OAuth integration
+- **Responsive Design**: Fully responsive design that works seamlessly across all devices
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🎨 User Experience
+- **Interactive Galleries**: High-quality image galleries for destinations and ships
+- **Advanced Search**: Search and filter destinations based on preferences
+- **Wishlist System**: Save favorite destinations and expeditions
+- **Share Functionality**: Share destinations and expeditions with others
+- **Newsletter Subscription**: Stay updated with latest expedition offerings
 
-**Use your preferred IDE**
+### 🏗️ Technical Features
+- **Modern Tech Stack**: Built with React, TypeScript, and Tailwind CSS
+- **Real-time Updates**: Dynamic content updates and booking management
+- **Performance Optimized**: Fast loading times and smooth interactions
+- **SEO Friendly**: Optimized for search engines
+- **Accessibility**: WCAG compliant design
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn package manager
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository:
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd wanderlust-explorer
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies:
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Set up environment variables:
+```bash
+# Create a .env file and add your Supabase credentials
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+5. Open your browser and navigate to `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🛠️ Technology Stack
 
-**Use GitHub Codespaces**
+- **Frontend Framework**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: shadcn/ui component library
+- **Icons**: Lucide React
+- **Charts**: Recharts for data visualization
+- **Authentication**: Supabase Auth with Google OAuth
+- **Database**: Supabase (PostgreSQL)
+- **Build Tool**: Vite
+- **State Management**: React Query (TanStack Query)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📱 Key Sections
 
-## What technologies are used for this project?
+### Destinations
+- Comprehensive destination catalog with detailed information
+- High-quality image galleries
+- Difficulty ratings and expedition details
+- Interactive destination modals
 
-This project is built with:
+### Expeditions
+- Curated expedition packages
+- Detailed itineraries and pricing
+- Real-time availability checking
+- Advanced filtering and search
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Ships
+- Fleet showcase with detailed specifications
+- Virtual ship tours and galleries
+- Cabin types and amenities
+- Booking integration
 
-## How can I deploy this project?
+### User Features
+- Secure authentication system
+- Personal wishlist management
+- Booking history and management
+- Newsletter and updates
 
-Simply open [Lovable](https://lovable.dev/projects/510b834d-fd46-464b-a72f-9f3601aacf56) and click on Share -> Publish.
+## 🎨 Design System
 
-## Can I connect a custom domain to my Lovable project?
+The application features a custom design system with:
+- Ocean-inspired color palette
+- Elegant animations and transitions
+- Responsive grid layouts
+- Consistent typography and spacing
+- Glass morphism effects
+- Custom gradients and shadows
 
-Yes, you can!
+## 📦 Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The application can be deployed to any static hosting service:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```bash
+# Build for production
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🌟 Acknowledgments
+
+- Beautiful destination imagery from professional travel photographers
+- UI inspiration from modern travel platforms
+- Icons and illustrations from the Lucide icon library
+
+---
+
+**Wanderlust Explorer** - *Discover the extraordinary. Experience the impossible.*
