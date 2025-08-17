@@ -1,5 +1,5 @@
 
-# Wanderlust Explorer - Expedition Travel Platform
+# Wanderlust Explorer
 
 A premium expedition travel platform showcasing exotic destinations and adventure expeditions around the world.
 
@@ -67,20 +67,23 @@ npm run dev
 
 - **Frontend**: React 18 with TypeScript
 - **Styling**: Tailwind CSS with custom design system
-- **UI Components**: Modern component architecture
+- **UI Components**: Shadcn/ui component library
 - **Icons**: Lucide React
 - **Authentication**: Supabase Auth with Google OAuth
 - **Database**: Supabase (PostgreSQL)
 - **Build Tool**: Vite
+- **Routing**: React Router DOM
+- **Form Handling**: React Hook Form with Zod validation
+- **State Management**: React Query for server state
 - **Charts**: Recharts for data visualization
 
-## 📱 Application Sections
+## 📱 Application Features
 
 ### Destinations
 - Comprehensive destination catalog with detailed descriptions
 - High-quality image galleries and photography
 - Difficulty ratings and expedition requirements
-- Interactive destination information
+- Interactive destination modals with comprehensive information
 
 ### Expeditions
 - Curated expedition packages and itineraries
@@ -96,18 +99,19 @@ npm run dev
 
 ### User Management
 - Secure authentication and account management
-- Personal wishlist and favorites
+- Personal wishlist and favorites system
 - Booking history and trip management
 - Newsletter subscription system
 
-## 🎨 Design
+## 🎨 Design System
 
 The application features a sophisticated design system:
-- Ocean-inspired color palette
+- Ocean-inspired color palette with HSL color variables
 - Smooth animations and transitions
 - Responsive grid layouts
 - Consistent typography and spacing
 - Modern gradients and visual effects
+- Dark/light mode support
 
 ## 📦 Build & Deploy
 
@@ -122,15 +126,38 @@ Preview the production build:
 npm run preview
 ```
 
-The built application can be deployed to any static hosting service.
+The built application can be deployed to any static hosting service like Vercel, Netlify, or AWS S3.
 
-## 🤝 Contributing
+## 🗂️ Project Structure
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Open a Pull Request
+```
+src/
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   ├── auth/           # Authentication components
+│   ├── destinations/   # Destination-related components
+│   ├── expeditions/    # Expedition components
+│   └── ships/          # Ship showcase components
+├── data/               # Static data files
+├── hooks/              # Custom React hooks
+├── lib/                # Utility libraries
+├── pages/              # Page components
+└── integrations/       # Third-party integrations
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+- `VITE_SUPABASE_URL`: Your Supabase project URL
+- `VITE_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+
+### Key Dependencies
+- React 18 with TypeScript for type safety
+- Tailwind CSS for styling with custom design tokens
+- Supabase for backend services and authentication
+- React Router for navigation
+- React Hook Form for form management
+- Zod for schema validation
 
 ## 📄 License
 
